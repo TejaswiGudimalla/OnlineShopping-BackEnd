@@ -21,26 +21,29 @@ public class UserDAOImpl implements UserDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	@Transactional
 	public List<OSUser> list() {
 		String hql ="from OSUser";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.list();
-		return null;
+		
+		return query.list();
 	}
     @Transactional
 	public OSUser get(String id) {
-		return (OSUser)sessionFactory.getCurrentSession().get(OSUser.class, id);
+		return (OSUser) sessionFactory.getCurrentSession().get(OSUser.class, id);
 	}
-    @Transactional
+    @SuppressWarnings({ "deprecation", "rawtypes" })
+	@Transactional
 	public OSUser validate(String id, String password) {
 		String hql="from OSUser where id='"+id+"' and password='"+password+"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		return (OSUser)query.uniqueResult();
 	}
 
-	public boolean save(OSUser OSUser) {
+	public boolean save(OSUser osuser) {
 		try{
-		  sessionFactory.getCurrentSession().save(OSUser);
+		  sessionFactory.getCurrentSession().save(osuser);
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -50,9 +53,10 @@ public class UserDAOImpl implements UserDAO {
 		return true;
 	}
 
-	public boolean update(OSUser OSUser) {
+	@Transactional
+	public boolean update(OSUser osuser) {
 		try {
-			sessionFactory.getCurrentSession().update(OSUser);
+			sessionFactory.getCurrentSession().update(osuser);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

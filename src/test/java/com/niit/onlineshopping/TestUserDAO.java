@@ -36,7 +36,7 @@ public class TestUserDAO{
 			return true;
 		}
 	}
-	public static void main(String[] args)
+	public static void main(String args[])
 	{
 		TestUserDAO t = new TestUserDAO();
 		t.validate("wit", "Tony");
