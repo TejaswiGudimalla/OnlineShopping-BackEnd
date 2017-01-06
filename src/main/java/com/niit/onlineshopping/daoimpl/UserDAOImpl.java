@@ -21,10 +21,10 @@ public class UserDAOImpl implements UserDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SuppressWarnings({"rawtypes", "unchecked", "deprecation"})
 	@Transactional
 	public List<OSUser> list() {
-		String hql ="from OSUser";
+		String hql ="from osuser";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();
@@ -41,6 +41,7 @@ public class UserDAOImpl implements UserDAO {
 		return (OSUser)query.uniqueResult();
 	}
 
+    @Transactional
 	public boolean save(OSUser osuser) {
 		try{
 		  sessionFactory.getCurrentSession().save(osuser);
@@ -64,6 +65,9 @@ public class UserDAOImpl implements UserDAO {
 	    return true;
 	}
 
-	
+	//public static boolean isValidCredentials(String id, String password) {
+		// TODO Auto-generated method stub
+		//return false;
+	//}
 	
 }

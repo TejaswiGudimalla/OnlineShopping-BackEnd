@@ -15,4 +15,5 @@ public interface UserDAO {
 	
 	public boolean update(OSUser osuser);
 
+
 }

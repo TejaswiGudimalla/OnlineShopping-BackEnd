@@ -25,7 +25,7 @@ public class TestUserDAO{
 	}
 	public boolean validate(String id, String password)
 	{
-		if (userDAO.validate(id,password)==null)
+		if (userDAO.validate(id, password)==null)
 		{
 			System.out.println("User does not exist");
 			return false;
@@ -39,6 +39,6 @@ public class TestUserDAO{
 	public static void main(String args[])
 	{
 		TestUserDAO t = new TestUserDAO();
-		t.validate("wit", "Tony");
+		t.validate("witty", "Tony");
 	}
 }

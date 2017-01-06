@@ -24,6 +24,7 @@ import com.niit.onlineshopping.model.OSUser;
 @EnableTransactionManagement
 public class ApplicationContextConfig 
 {
+	//@Autowired*/
 	@Bean(name="dataSource")
 	public DataSource getDataSource()
 	{
@@ -36,6 +37,8 @@ public class ApplicationContextConfig
 		return dataSource;
 	}
 	
+	/*@Autowired
+	@Bean(name="properties")*/
 	private Properties getHibernateProperties()
 	{
 		Properties properties = new Properties();
