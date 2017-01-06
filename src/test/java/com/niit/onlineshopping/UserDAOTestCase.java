@@ -52,6 +52,22 @@ public class UserDAOTestCase {
 	public void getAlluserTestCase()
 	{
 	int size=	userDAO.list().size();
-		Assert.assertEquals("Size Of Table",1, 1);
+		Assert.assertEquals("Size Of Table",8, 8);
+	}
+	
+	@Test
+	public void saveTestCase()
+	{
+		osuser.setId("hamara");
+		osuser.setName("bajaj");
+		osuser.setPassword("hibernate");
+		osuser.setMail_id("witty@mahoo.com");
+		osuser.setMobilenumber("5451544753");
+		osuser.setRole("Customer");
+		
+		Assert.assertEquals("saveTestCase", true, userDAO.save(osuser));
+		
+		
+		
 	}
 }
