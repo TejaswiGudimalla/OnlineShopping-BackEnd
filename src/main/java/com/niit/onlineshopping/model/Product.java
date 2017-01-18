@@ -4,23 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="Product")
 @Component
 public class Product {
 	
-	private String id;
+	private int id;
 	private String name;
 	private String description;
 	private String category_id;
 	private String supplier_id;
 	private int price;
 		
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -52,6 +53,10 @@ public class Product {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public MultipartFile getImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

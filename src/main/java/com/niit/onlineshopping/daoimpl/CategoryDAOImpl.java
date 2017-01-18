@@ -55,4 +55,19 @@ public class CategoryDAOImpl implements CategoryDAO  {
 	    return true;
 	}
 
+	public Category get(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Category getByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

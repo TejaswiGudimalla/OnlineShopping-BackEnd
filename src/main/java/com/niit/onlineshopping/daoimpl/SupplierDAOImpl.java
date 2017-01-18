@@ -55,4 +55,9 @@ public class SupplierDAOImpl implements SupplierDAO {
 	    return true;
 	}
 
+	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

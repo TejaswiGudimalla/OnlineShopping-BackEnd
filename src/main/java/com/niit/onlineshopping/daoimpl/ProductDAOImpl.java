@@ -55,4 +55,19 @@ public class ProductDAOImpl implements ProductDAO {
 	    return true;
 	}
 
+	public boolean delete(String id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Product get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean delete(Product product) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
