@@ -55,7 +55,7 @@ public class CategoryDAOImpl implements CategoryDAO  {
 	    return true;
 	}
 
-	public Category get(String id) {
+	public Category get(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -65,7 +65,7 @@ public class CategoryDAOImpl implements CategoryDAO  {
 		return null;
 	}
 
-	public boolean delete(String id) {
+	public boolean delete(Category category) {
 		// TODO Auto-generated method stub
 		return false;
 	}

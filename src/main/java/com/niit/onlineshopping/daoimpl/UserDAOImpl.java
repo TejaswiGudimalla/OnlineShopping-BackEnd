@@ -31,13 +31,13 @@ public class UserDAOImpl implements UserDAO {
 		return query.list();
 	}
     @Transactional
-	public OSUser get(String id) {
+	public OSUser get(int id) {
 		return (OSUser) sessionFactory.getCurrentSession().get(OSUser.class, id);
 	}
     @SuppressWarnings({ "rawtypes" })
 	@Transactional
-	public OSUser validate(String id, String password) {
-		String hql="from OSUser where id='"+id+"' and password='"+password+"'";
+	public OSUser validate(String username, String password) {
+		String hql="from OSUser where id='"+username+"' and password='"+password+"'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		return (OSUser)query.uniqueResult();
 	}
@@ -64,6 +64,11 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	    return true;
+	}
+
+	public OSUser get(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

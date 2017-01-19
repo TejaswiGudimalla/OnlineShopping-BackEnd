@@ -3,8 +3,8 @@ package com.niit.onlineshopping.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+//import javax.validation.constraints.Max;
+//import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
@@ -14,11 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class  OSUser {
 	@Id
-	private String id;
+	private int id;
 	
-	@Min(8)
-	@Max(15)
+	//@Min(8)
+	//@Max(15)
 	private String password;
+	
+	private String username;
 	
 	@NotEmpty(message="Enter Name")
 	private String name;
@@ -57,12 +59,18 @@ public class  OSUser {
 		this.mail_id = mail_id;
 	}
 	
-	public String getId(){
+	public int getId(){
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		// TODO Auto-generated method stub
 		this.id=id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 }

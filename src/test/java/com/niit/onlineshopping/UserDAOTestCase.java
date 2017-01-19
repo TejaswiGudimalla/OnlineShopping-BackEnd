@@ -35,35 +35,30 @@ public class UserDAOTestCase {
 	@Test
 	 public void getUserTestCase()
 	 {
-	osuser=	userDAO.get("wit");
-		Assert.assertEquals("User Test Case","wit",osuser.getName());
+	osuser=	userDAO.get(101);
+		Assert.assertEquals("User Test Case","Tony",osuser.getName());
 	 }
 	
 	@Test
 	public void validateCredentials()
 	{
-		osuser=userDAO.validate("wit","Tony");
+		osuser=userDAO.validate("witty","Tony");
 		Assert.assertEquals("Validate Test Case",osuser,osuser);
 	}
    
-	@Test
-	public void getAlluserTestCase()
-	{
-	int size=	userDAO.list().size();
-		Assert.assertEquals("Size Of Table",8, 8);
-	}
 	
 	@Test
 	public void saveTestCase()
 	{
-		osuser.setId("hamara");
-		osuser.setName("bajaj");
-		osuser.setPassword("hibernate");
-		osuser.setMail_id("witty@mahoo.com");
-		osuser.setMobilenumber("5451544753");
-		osuser.setRole("Customer");
+		osuser.setId(104);
+		osuser.setName("bajajfour");
+		osuser.setPassword("savendupdate");
+		osuser.setMail_id("101@mahoo.com");
+		osuser.setMobilenumber("5671544753");
+		osuser.setRole("User");
+		osuser.setUsername("new");
 		
-		Assert.assertEquals("saveTestCase", true, userDAO.save(osuser));
+		Assert.assertEquals("saveTestCase", true, userDAO.update(osuser));
 		
 		
 		

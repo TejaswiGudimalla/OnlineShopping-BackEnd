@@ -8,7 +8,7 @@ public interface CategoryDAO {
 	
     public List<Category> list();
     
-    public Category get(String id);
+    public Category get(int id);
     
     public Category getByName(String name);
 		
@@ -16,6 +16,6 @@ public interface CategoryDAO {
 	
 	public boolean update(Category category);
 	
-	public boolean delete(String id);
+	public boolean delete(Category category);
 
 }

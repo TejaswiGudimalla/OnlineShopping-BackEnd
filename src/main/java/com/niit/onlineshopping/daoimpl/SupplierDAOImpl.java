@@ -55,9 +55,14 @@ public class SupplierDAOImpl implements SupplierDAO {
 	    return true;
 	}
 
-	public boolean delete(String id) {
+	public boolean delete(Supplier supplier) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Supplier get(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
