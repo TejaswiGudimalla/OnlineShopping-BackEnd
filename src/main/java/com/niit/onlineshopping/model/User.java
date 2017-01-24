@@ -1,19 +1,21 @@
 package com.niit.onlineshopping.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 //import javax.validation.constraints.Max;
 //import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="OSUser")
+@Table(name="User")
 @Component
-public class  OSUser {
+public class  User {
 	@Id
+	@GeneratedValue
 	private int id;
 	
 	//@Min(8)
@@ -22,12 +24,13 @@ public class  OSUser {
 	
 	private String username;
 	
-	@NotEmpty(message="Enter Name")
+	@NotNull(message="Enter Name")
 	private String name;
 	
 	private String mobilenumber;
 	private String role;
 	private String mail_id;
+	private boolean enabled;
 	public String getName() {
 		return name;
 	}
@@ -72,5 +75,11 @@ public class  OSUser {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+		
 }

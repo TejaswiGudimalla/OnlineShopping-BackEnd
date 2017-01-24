@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.onlineshopping.dao.UserDAO;
-import com.niit.onlineshopping.model.OSUser;
+import com.niit.onlineshopping.model.User;
 
 public class TestUserDAO{
 	@Autowired
 	UserDAO userDAO;
 	
 	@Autowired
-	OSUser osuser;
+	User user;
 	
 	@Autowired
 	AnnotationConfigApplicationContext context;
@@ -21,7 +21,7 @@ public class TestUserDAO{
 		context.scan("com.niit.onlineshopping");
 		context.refresh();
 		userDAO = (UserDAO) context.getBean("userDAOImpl");
-		osuser = (OSUser) context.getBean("OSUser");
+		user = (User) context.getBean("User");
 	}
 	public boolean validate(String id, String password)
 	{

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,8 @@ import com.niit.onlineshopping.model.Supplier;
 @Repository
 public class SupplierDAOImpl implements SupplierDAO {
 	
+	private static final Logger log = LoggerFactory.getLogger(SupplierDAOImpl.class);
+	
 	@Autowired
 	public SessionFactory sessionFactory;
 	public SupplierDAOImpl(SessionFactory sessionFactory)
@@ -25,7 +29,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	@Transactional
 	public List<Supplier> list() {
-		String hql ="from supplier";
+		String hql ="from Supplier";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		
 		return query.list();

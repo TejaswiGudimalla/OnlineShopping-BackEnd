@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.onlineshopping.dao.UserDAO;
-import com.niit.onlineshopping.model.OSUser;
+import com.niit.onlineshopping.model.User;
 
 public class UserDAOTestCase {
 	
@@ -15,7 +15,7 @@ public class UserDAOTestCase {
 	 static  UserDAO userDAO;
 	
 	@Autowired
-	 static OSUser osuser;
+	 static User user;
 	
 	@Autowired
 	static	AnnotationConfigApplicationContext context;
@@ -27,40 +27,57 @@ public class UserDAOTestCase {
 		context.scan("com.niit.onlineshopping");
 		context.refresh();
 		
-		osuser=(OSUser)context.getBean("OSUser");
+		user=(User)context.getBean("user");
 		userDAO=(UserDAO)context.getBean("userDAOImpl");
-		
-	}
+    }
 	
 	@Test
 	 public void getUserTestCase()
 	 {
-	osuser=	userDAO.get(101);
-		Assert.assertEquals("User Test Case","Tony",osuser.getName());
-	 }
+	   user = userDAO.get("niit");
+		Assert.assertEquals("User Test Case","niit",user.getUsername());
+	 } 
 	
 	@Test
-	public void validateCredentials()
+	public void getAlluserTestCase()
 	{
-		osuser=userDAO.validate("witty","Tony");
-		Assert.assertEquals("Validate Test Case",osuser,osuser);
+	int size=	userDAO.list().size();
+		Assert.assertEquals("Size Of Table",size, size);
 	}
-   
 	
+	@Test
+	public void  getUserTestCase1()
+	{
+		user=userDAO.get("niit");
+		Assert.assertNotNull("Get User Test Case",user);
+		
+	}
+    
 	@Test
 	public void saveTestCase()
 	{
-		osuser.setId(104);
-		osuser.setName("bajajfour");
-		osuser.setPassword("savendupdate");
-		osuser.setMail_id("101@mahoo.com");
-		osuser.setMobilenumber("5671544753");
-		osuser.setRole("User");
-		osuser.setUsername("new");
+		user.setName("Teja");
+	    user.setMobilenumber("7676767676");
+		user.setMail_id("teja@gmail.com");
+		user.setPassword("teja");
+	    user.setRole("Admin");
+	    user.setUsername("teja");
+	    user.setEnabled(true);
 		
-		Assert.assertEquals("saveTestCase", true, userDAO.update(osuser));
-		
-		
-		
+	    Assert.assertEquals("save Test Case",true,userDAO.save(user));
+	}
+
+    @Test
+    public void validateCredentials()
+    {
+	    user=userDAO.validate("niit","niit");
+	    Assert.assertNotNull("ValidateCredentials",user);
+	}
+    
+    @Test
+    public void invalidateCredentials()
+    {
+    	user=userDAO.validate("niit","niit@13");
+    	Assert.assertNull("Invalid Credentials",user);
 	}
 }

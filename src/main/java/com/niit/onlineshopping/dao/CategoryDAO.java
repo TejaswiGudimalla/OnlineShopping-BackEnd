@@ -10,7 +10,7 @@ public interface CategoryDAO {
     
     public Category get(int id);
     
-    public Category getByName(String name);
+    //public Category getByName(String name);
 		
     public boolean save(Category category);
 	

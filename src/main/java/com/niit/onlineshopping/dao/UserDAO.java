@@ -2,20 +2,20 @@ package com.niit.onlineshopping.dao;
 
 import java.util.List;
 
-import com.niit.onlineshopping.model.OSUser;
+import com.niit.onlineshopping.model.User;
 
 public interface UserDAO {
-	public List<OSUser> list();
+	public List<User> list();
 	
-	public OSUser get(int id);
+	public User get(int id);
 	
-	public OSUser validate(String username, String password);
+	public User validate(String username, String password);
 	
-	public boolean save(OSUser osuser);
+	public boolean save(User user);
 	
-	public boolean update(OSUser osuser);
+	public boolean update(User user);
 	
-	public OSUser get(String username);
+	public User get(String username);
 
 
 }
