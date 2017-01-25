@@ -12,7 +12,7 @@ public interface CategoryDAO {
     
     //public Category getByName(String name);
 		
-    public boolean save(Category category);
+    public boolean saveorupdate(Category category);
 	
 	public boolean update(Category category);
 	

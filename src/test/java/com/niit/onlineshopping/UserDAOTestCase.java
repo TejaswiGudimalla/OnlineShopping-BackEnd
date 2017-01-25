@@ -70,14 +70,14 @@ public class UserDAOTestCase {
     @Test
     public void validateCredentials()
     {
-	    user=userDAO.validate("niit","niit");
+	    user=userDAO.validate(1,"niit");
 	    Assert.assertNotNull("ValidateCredentials",user);
 	}
     
     @Test
     public void invalidateCredentials()
     {
-    	user=userDAO.validate("niit","niit@13");
+    	user=userDAO.validate(1,"niit@13");
     	Assert.assertNull("Invalid Credentials",user);
 	}
 }

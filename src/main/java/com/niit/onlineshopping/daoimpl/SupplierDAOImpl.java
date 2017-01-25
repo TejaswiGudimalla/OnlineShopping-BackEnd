@@ -2,6 +2,7 @@ package com.niit.onlineshopping.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -17,35 +18,26 @@ import com.niit.onlineshopping.model.Supplier;
 @Repository
 public class SupplierDAOImpl implements SupplierDAO {
 	
-	private static final Logger log = LoggerFactory.getLogger(SupplierDAOImpl.class);
+	//private static final Logger log = LoggerFactory.getLogger(SupplierDAOImpl.class);
 	
 	@Autowired
-	public SessionFactory sessionFactory;
-	public SupplierDAOImpl(SessionFactory sessionFactory)
-	{
+	private SessionFactory sessionFactory;
+
+	public SupplierDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	@SuppressWarnings({"rawtypes", "unchecked"})
-	@Transactional
-	public List<Supplier> list() {
-		String hql ="from Supplier";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
-		return query.list();
-	}
 
-    @Transactional
+	@Transactional
 	public boolean save(Supplier supplier) {
-		try{
-		  sessionFactory.getCurrentSession().save(supplier);
-		}
-		catch (Exception e){
+		try {
+			System.out.println("save method is executed in supplier");
+			sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+			return true;
+		} catch (Exception e) {
 			e.printStackTrace();
-			//This is used to know the error which will be displayed in the console. 
 			return false;
 		}
-		return true;
+
 	}
 
 	@Transactional
@@ -56,17 +48,54 @@ public class SupplierDAOImpl implements SupplierDAO {
 			e.printStackTrace();
 			return false;
 		}
-	    return true;
+		return true;
 	}
 
+	@Transactional
 	public boolean delete(Supplier supplier) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			sessionFactory.getCurrentSession().delete(supplier);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
+	@Transactional
+	public Supplier get(String id) {
+		String hql = "from Supplier where id= " + "'" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Supplier> list = query.list();
+		if (list == null) {
+			return null;
+		} else {
+			return list.get(0);
+		}
+	}
+
+	@Transactional
+	public List<Supplier> list() {
+		String hql = "from Supplier";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		return query.list();
+	}
+
+	@Transactional
 	public Supplier get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String hql = "from Supplier where id= "+ "'"+ id+"'" ;
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		List<Supplier>list= query.list();
+		
+		if(list==null)
+		{
+			return null;
+		}
+		else
+		{
+			return list.get(0);
+		}
 	}
-
 }

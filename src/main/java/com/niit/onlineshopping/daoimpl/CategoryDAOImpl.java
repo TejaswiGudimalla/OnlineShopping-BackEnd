@@ -37,16 +37,17 @@ public class CategoryDAOImpl implements CategoryDAO  {
 	}
     
     @Transactional
-	public boolean save(Category category) {
+	public boolean saveorupdate(Category category) {
 		try{
-		  sessionFactory.getCurrentSession().save(category);
+		  sessionFactory.getCurrentSession().saveOrUpdate(category);
+		  return true;
 		}
 		catch (Exception e){
 			e.printStackTrace();
 			//This is used to know the error which will be displayed in the console. 
 			return false;
 		}
-		return true;
+		
 	}
 
 	@Transactional
@@ -60,6 +61,7 @@ public class CategoryDAOImpl implements CategoryDAO  {
 	    return true;
 	}
 
+	@Transactional
 	public Category get(int id) {
 		String hql = "from Category where id= "+ "'"+ id+"'" ;
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -75,6 +77,7 @@ public class CategoryDAOImpl implements CategoryDAO  {
 		}
 	}
 
+	@Transactional
 	public boolean delete(Category category) {
 		try {
 			log.debug("Delete method Is Starting..........D.......! ");

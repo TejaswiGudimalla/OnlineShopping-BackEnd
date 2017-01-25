@@ -89,6 +89,7 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 
+	@Transactional
 	public List<Product> getproduct(int id) {
 		String hql = "from Product where id= " + id;
 		@SuppressWarnings("rawtypes")
