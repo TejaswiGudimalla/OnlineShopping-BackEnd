@@ -63,7 +63,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 	}
 
 	@Transactional
-	public Supplier get(String id) {
+	public Supplier get(int id) {
 		String hql = "from Supplier where id= " + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Supplier> list = query.list();
@@ -82,20 +82,4 @@ public class SupplierDAOImpl implements SupplierDAO {
 		return query.list();
 	}
 
-	@Transactional
-	public Supplier get(int id) {
-		
-		String hql = "from Supplier where id= "+ "'"+ id+"'" ;
-		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		List<Supplier>list= query.list();
-		
-		if(list==null)
-		{
-			return null;
-		}
-		else
-		{
-			return list.get(0);
-		}
-	}
 }

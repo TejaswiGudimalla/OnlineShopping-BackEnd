@@ -25,12 +25,12 @@ public class ProductDAOImpl implements ProductDAO {
 	@Transactional
 	public boolean save(Product product) {
 		try {
-			log.debug("Save method Is Starting");
-			sessionFactory.getCurrentSession().saveOrUpdate(product);
-			log.debug("Save Method is Ending");
+			//log.debug("Save method Is Starting");
+			sessionFactory.getCurrentSession().save(product);
+			//log.debug("Save Method is Ending");
 			return true;
 		} catch (Exception e) {
-			log.info("Exception Occureing save Method" + e.getMessage());
+			//log.info("Exception Occureing save Method" + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
@@ -40,24 +40,20 @@ public class ProductDAOImpl implements ProductDAO {
 	public boolean update(Product product) {
 
 		try {
-			log.debug("Update method Is Starting");
-			sessionFactory.getCurrentSession().save(product);
-			log.debug("update Method is Ending");
-			return true;
-
+			sessionFactory.getCurrentSession().update(product);
 		} catch (Exception e) {
-			log.info("Exception Occureing Update Method" + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
+	    return true;
 	}
 
 	@Transactional
 	public boolean delete(Product product) {
 		try {
-			log.debug("Delete method Is Starting..........D.......! ");
-			sessionFactory.getCurrentSession().save(product);
-			log.debug("Delete Method is Ending.........D.......!");
+			log.debug("Delete method Is Starting");
+			sessionFactory.getCurrentSession().delete(product);
+			log.debug("Delete Method is Ending");
 			return true;
 		} catch (Exception e) {
 			log.info("Exception Occureing Delete Method......D.....!" + e.getMessage());

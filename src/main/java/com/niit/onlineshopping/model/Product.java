@@ -1,9 +1,12 @@
 package com.niit.onlineshopping.model;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +24,20 @@ public class Product {
 	private String category_id;
 	private String supplier_id;
 	private int price;
+	
+    @Transient
+	private MultipartFile image;
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	
+	
+	
 		
 	public int getId() {
 		return id;
@@ -58,10 +75,6 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public MultipartFile getImage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 
 }
