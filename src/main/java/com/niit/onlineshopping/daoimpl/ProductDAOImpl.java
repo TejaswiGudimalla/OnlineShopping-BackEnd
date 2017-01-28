@@ -87,7 +87,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Transactional
 	public List<Product> getproduct(int id) {
-		String hql = "from Product where id= " + id;
+		String hql = "from Product where id= " + "'" + id + "'";
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Product> listProduct = (List<Product>) query.list();
@@ -96,10 +96,10 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Transactional
 	public List<Product> navproduct(int id) {
-		String hql = "from Product where category_id= " + id;
+		String hql = "from Product where category_id= " + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		List<Product> catproduct = (List<Product>) query.list();
-		return catproduct;
+		List<Product> CartProducts = (List<Product>) query.list();
+		return CartProducts;
 	}
 
 }

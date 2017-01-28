@@ -63,9 +63,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
     @Transactional
-	public boolean save(User user) {
+	public boolean saveorupdate(User user) {
 		try{
-		  sessionFactory.getCurrentSession().save(user);
+		  sessionFactory.getCurrentSession().saveOrUpdate(user);
 		  return true;
 		}
 		catch (Exception e){

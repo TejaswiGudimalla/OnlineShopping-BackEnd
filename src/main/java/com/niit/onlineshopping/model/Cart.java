@@ -45,6 +45,26 @@ public class Cart {
 		this.id = id;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public void setStatus(String string) {
+	
+	}
+
 	public int getProductid() {
 		return productid;
 	}
@@ -67,26 +87,6 @@ public class Cart {
 
 	public void setProductname(String productname) {
 		this.productname = productname;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public void setStatus(String string) {
-	
 	}
 
 }

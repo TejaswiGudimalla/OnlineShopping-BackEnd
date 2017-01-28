@@ -97,8 +97,8 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 	
 	@Transactional
 	@SuppressWarnings({ "unchecked", "deprecation" })
-	public Cart getproductid(int productid) {
-		String hql="from Cart where productid= "+productid;
+	public Cart getProduct(int productid) {
+		String hql="from Cart where productid= "+"'"+ productid+"'" ;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Cart>listproduct=query.list();
@@ -116,8 +116,8 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 	}
 	
 	@Transactional
-	public void pay(int userId) {
-		String hql="update Cart set status='P' where userid="+userId;	
+	public void pay(int userid) {
+		String hql="update Cart set status='P' where userid="+"'"+userid+"'";	
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.executeUpdate();
@@ -126,9 +126,9 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 
 	@SuppressWarnings("deprecation")
 	@Transactional
-	public double cartprice(int userId) {
+	public double cartprice(int userid) {
 		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
-		c.add(Restrictions.eq("userid", userId));
+		c.add(Restrictions.eq("userid", userid));
 		c.add(Restrictions.eq("status","C"));
 		c.setProjection(Projections.sum("price"));
 		double l= (Double)c.uniqueResult();
@@ -136,9 +136,9 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 	}
 	@SuppressWarnings("deprecation")
 	@Transactional
-	public long cartsize(int userId) {
+	public long cartsize(int userid) {
 		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
-		c.add(Restrictions.eq("userid", userId));
+		c.add(Restrictions.eq("userid", userid));
 		c.add(Restrictions.eq("status","C"));
 		c.setProjection(Projections.count("userid"));
 		long count=(Long) c.uniqueResult();

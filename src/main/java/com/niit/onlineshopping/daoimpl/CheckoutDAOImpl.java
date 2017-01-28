@@ -5,11 +5,14 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.onlineshopping.dao.CheckoutDAO;
 import com.niit.onlineshopping.model.Checkout;
 
+@SuppressWarnings("deprecation")
+@Repository
 public class CheckoutDAOImpl implements CheckoutDAO {
 	
 

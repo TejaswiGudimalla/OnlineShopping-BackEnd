@@ -7,7 +7,7 @@
 </encoder>
 </appender>
 <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-<file>F:\NIIT\Project\ScartBackEnd\log-${byDay}.txt</file>
+<file>F:\NIIT\Project\OnlineShoppingBackEnd\log-${byDay}.txt</file>
 <append>true</append>
 <encoder>
 <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>

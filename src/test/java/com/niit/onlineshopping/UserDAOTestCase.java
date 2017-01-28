@@ -64,7 +64,7 @@ public class UserDAOTestCase {
 	    user.setUsername("teja");
 	    user.setEnabled(true);
 		
-	    Assert.assertEquals("save Test Case",true,userDAO.save(user));
+	    Assert.assertEquals("save Test Case",true,userDAO.saveorupdate(user));
 	}
 
     @Test

@@ -21,6 +21,7 @@ import com.niit.onlineshopping.model.Supplier;
 import com.niit.onlineshopping.model.User;
 
 
+
 @Configuration
 @ComponentScan("com.niit.onlineshopping")
 @EnableTransactionManagement
@@ -57,8 +58,8 @@ public class ApplicationContextConfig {
 	    sessionBuilder.addAnnotatedClasses(Product.class);
 	    sessionBuilder.addAnnotatedClasses(Category.class);
 	    sessionBuilder.addAnnotatedClasses(Cart.class);
-	    sessionBuilder.addAnnotatedClasses(Checkout.class);
-		System.out.println("Session is created......!");
+		sessionBuilder.addAnnotatedClasses(Checkout.class);
+		System.out.println("Session is crated......!");
 		return sessionBuilder.buildSessionFactory();
 		
 	}
@@ -70,6 +71,4 @@ public class ApplicationContextConfig {
 		return transactionManager;
 	}
 	
-	
-
 }

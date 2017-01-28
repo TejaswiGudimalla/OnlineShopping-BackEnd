@@ -16,12 +16,12 @@ public interface CartDAO {
 
 	public Cart get(int id);
 
-	public Cart getproductid(int id);
+	public Cart getProduct(int id);
 
-	public long cartsize(int userId);
+	public long cartsize(int userid);
 
-	public double cartprice(int userId);
+	public double cartprice(int userid);
 
-	public void pay(int userId);
+	public void pay(int userid);
 
 }
