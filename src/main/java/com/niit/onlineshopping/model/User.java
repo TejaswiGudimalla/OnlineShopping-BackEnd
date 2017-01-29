@@ -66,7 +66,6 @@ public class  User {
 		return id;
 	}
 	public void setId(int id) {
-		// TODO Auto-generated method stub
 		this.id=id;
 	}
 	public String getUsername() {

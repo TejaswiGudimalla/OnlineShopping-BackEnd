@@ -1,5 +1,7 @@
 package com.niit.onlineshopping.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,9 +10,9 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table
+@Table(name="Checkout")
 @Component
-public class Checkout {
+public class Checkout implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	

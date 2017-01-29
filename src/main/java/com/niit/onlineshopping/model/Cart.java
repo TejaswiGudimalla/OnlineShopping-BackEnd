@@ -1,5 +1,6 @@
 package com.niit.onlineshopping.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Cart {
 	
 	private String productname;
 	
-	//@Column(columnDefinition = "int default 1")
+	@Column(columnDefinition = "int default 1")
 	private int quantity;
 	
 	private double price;
