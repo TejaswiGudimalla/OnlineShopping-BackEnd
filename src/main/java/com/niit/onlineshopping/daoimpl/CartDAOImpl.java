@@ -98,7 +98,7 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 	@Transactional
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public Cart getProduct(int productid) {
-		String hql="from Cart where productid= "+"'"+ productid+"'" ;
+		String hql = "from"+" Cart"+" where Status='C' and productid="+"'"+productid+"'";
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Cart>listproduct=query.list();
@@ -115,6 +115,7 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Transactional
 	public void pay(int userid) {
 		String hql="update Cart set status='P' where userid="+"'"+userid+"'";	

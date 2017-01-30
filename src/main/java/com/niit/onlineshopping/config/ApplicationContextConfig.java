@@ -13,6 +13,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.onlineshopping.dao.CartDAO;
+import com.niit.onlineshopping.daoimpl.CartDAOImpl;
 import com.niit.onlineshopping.model.Cart;
 import com.niit.onlineshopping.model.Category;
 import com.niit.onlineshopping.model.Checkout;
@@ -69,6 +71,12 @@ public class ApplicationContextConfig {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		System.out.println("Transaction");
 		return transactionManager;
+	}
+	
+	@Autowired
+	@Bean(name = "cartDAO")
+	public CartDAO getCartDAO(SessionFactory sessionFactory){
+		return new CartDAOImpl(sessionFactory);
 	}
 	
 }

@@ -23,20 +23,12 @@ public class Cart {
 	
 	private String productname;
 	
-	@Column(columnDefinition = "int default 1")
+	//@Column(columnDefinition = "int default 1")
 	private int quantity;
 	
 	private double price;
 	
-	private double subtotal;
-
-	public double getSubtotal() {
-		return subtotal;
-	}
-
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
-	}
+	private String status;
 
 	public int getId() {
 		return id;
@@ -62,10 +54,6 @@ public class Cart {
 		this.price = price;
 	}
 
-	public void setStatus(String string) {
-	
-	}
-
 	public int getProductid() {
 		return productid;
 	}
@@ -88,6 +76,14 @@ public class Cart {
 
 	public void setProductname(String productname) {
 		this.productname = productname;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }
