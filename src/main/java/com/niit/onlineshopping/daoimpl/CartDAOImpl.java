@@ -31,18 +31,19 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 	}
 	
 	@Transactional
-	public boolean save(Cart Cart) {
+	public boolean saveorupdate(Cart cart) {
 		log.info("cart save operation started");
 		try {
-			sessionFactory.getCurrentSession().save(Cart);
+			sessionFactory.getCurrentSession().saveOrUpdate (cart);
 			return true;
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 			log.info("cart saved");
 			return false;
 		}
+		
 	}
-	
 	@Transactional
 	public boolean update(Cart cart) {
 		try {
@@ -80,25 +81,18 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 
 	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 	@Transactional
-	public Cart get(int id) {
-		String hql = "from Cart where id= "+ "'"+ id+"'" ;
+	public List<Cart> get(int userid) {
+		String hql = "from"+" Cart"+" where userid="+userid+"and status='C'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		List<Cart>list= query.list();
-		
-		if(list==null)
-		{
-			return null;
-		}
-		else
-		{
-			return list.get(0);
-		}
+		List<Cart> list= (List<Cart>)query.list();
+		return list;
+	 
 	}
 	
 	@Transactional
 	@SuppressWarnings({ "unchecked", "deprecation" })
-	public Cart getProduct(int productid) {
-		String hql = "from"+" Cart"+" where Status='C' and productid="+"'"+productid+"'";
+	public Cart getProduct(int productid,int userid) {
+		String hql = "from"+" Cart"+" where Status='C'and userid="+"'"+userid+"'"+" and productid="+"'"+productid+"'";
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Cart>listproduct=query.list();
@@ -146,4 +140,16 @@ private static final Logger log=LoggerFactory.getLogger(CartDAOImpl.class);
 		return count;
 	}
 
+	@Transactional
+	public Cart getitem(int cartId) {
+		String hql = "from"+" Cart"+" where id="+"'"+cartId+"'";
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Cart> list = (List<Cart>) query.list();
+		if (list!= null && !list.isEmpty()) {
+			return list.get(0);
+		}
+		return null;
+	}
+	
 }
