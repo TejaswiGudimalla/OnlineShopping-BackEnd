@@ -15,7 +15,7 @@ This is an E-commerce project built using Spring, Hibernate ORM and Spring secur
 - Download Eclipse
 - Install Tomcat
 - Set Tomcat path Reference
-- Download Project [here](https://github.com/TejaswiGudimalla/OnlineShopping-BackEnd)
+- Download Project [here](https://github.com/TejaswiGudimalla/OnlineShopping-BackEnd/archive/master.zip)
 - Import Project in Eclipse
    - File
    - Import
