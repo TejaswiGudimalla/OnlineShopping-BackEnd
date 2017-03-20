@@ -91,7 +91,6 @@ public class UserDAOImpl implements UserDAO {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(User.class);
 		c.add(Restrictions.eq("username", username));
 
-		@SuppressWarnings("unchecked")
 		List<User> listUser = (List<User>) c.list();
 
 		if (listUser != null && !listUser.isEmpty()) {
